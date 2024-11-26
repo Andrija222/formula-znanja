@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formula Znanja</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Formula Znanja - Rezervacija</h1>
+    
+    <div id="adminWeekControl" style="display: none;">
+        <label for="startDate">Početni datum:</label>
+        <input type="date" id="startDate">
+        <label for="endDate">Krajnji datum:</label>
+        <input type="date" id="endDate">
+        <button onclick="updateWeek()">Ažuriraj nedelju</button>
+    </div>
+    
+    <p>Samo admin može da ažurira nedelju.</p>
+
+    <div id="weekDisplay" style="display: none;">
+        <h2 id="weekRange"></h2>
+    </div>
+
+    <table id="reservationTable">
+        <tr>
+            <th>Dan</th>
+            <th>Vreme</th>
+            <th>Status</th>
+            <th>Akcija</th>
+        </tr>
+        <!-- Primer redova, možete dodati više -->
+        <tr>
+            <td>Ponedeljak</td>
+            <td>17:00 - 18:00</td>
+            <td class="status">Slobodno</td>
+            <td>
+                <button onclick="reserve(this)">Rezerviši</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Ponedeljak</td>
+            <td>18:00 - 19:00</td>
+            <td class="status">Slobodno</td>
+            <td>
+                <button onclick="reserve(this)">Rezerviši</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Ponedeljak</td>
+            <td>19:00 - 20:00</td>
+            <td class="status">Slobodno</td>
+            <td>
+                <button onclick="reserve(this)">Rezerviši</button>
+            </td>
+        </tr>
+        <!-- Dodajte više redova za ostale dane u nedelji -->
+    </table>
+
+    <div id="adminPanel">
+        <h2>Admin Panel</h2>
+        <input type="password" id="adminPassword" placeholder="Unesite šifru">
+        <button onclick="adminLogin()">Prijavi se</button>
+        <button onclick="adminLogout()" style="display: none;" id="logoutButton">Izloguj se</button>
+        <div id="adminControls" style="display: none;">
+            <h3>Dodaj novi termin</h3>
+            <input type="text" id="newDay" placeholder="Dan (npr. Ponedeljak)">
+            <input type="text" id="newTimeSlot" placeholder="Vreme (npr. 17:00 - 18:00)">
+            <button onclick="addTimeSlot()">Dodaj</button>
+            <h3>Lista rezervacija</h3>
+            <table id="miniReservationTable">
+                <tr>
+                    <th>Dan</th>
+                    <th>Vreme</th>
+                    <th>Ime</th>
+                    <th>Akcija</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
